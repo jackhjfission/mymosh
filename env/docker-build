@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+# build command. Will be documented in the readme
+sudo docker build \
+    -t $(cat ./nametag) \
+    -f ./Dockerfile \
+    ./

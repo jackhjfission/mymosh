@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+sudo docker stop $(cut ./env/nametag -f1 -d:)
+sudo docker rm $(cut ./env/nametag -f1 -d:)
