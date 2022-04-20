@@ -34,6 +34,9 @@ WORKDIR /home/repo
 
 # install miniconda python distribution
 COPY ./miniconda-install /home/miniconda-install
+COPY ./requirements.yml /home/requirements.yml
 RUN chmod +x ~/miniconda-install \
     && ~/miniconda-install \
-    && rm -rf ~/miniconda-install
+    && rm -rf ~/miniconda-install \
+    && /miniconda3/bin/conda env update --file /home/requirements.yml --prune \
+    && rm -rf /home/requirements.yml
