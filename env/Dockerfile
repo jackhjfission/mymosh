@@ -3,10 +3,6 @@ FROM ubuntu:20.04
 
 LABEL maintainer="jackhjfission <jackhjfission@gmail.com>"
 
-# Set environment variables
-# this will allow some code I'm going to write to know where it is running
-ENV CONTAINER_NAME=mymosh
-
 # set the environment variable and volume to share ssh keys
 # set the image SSH_AUTH_SOCK to a specific directory
 ENV SSH_AUTH_SOCK=/ssh-agent/ssh
