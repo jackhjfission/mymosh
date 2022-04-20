@@ -17,11 +17,11 @@ VOLUME /ssh-agent
 ARG TZ=UTC
 RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 
-# install minimal python3.9 reqs
+# install very minimal reqs
 RUN apt-get update --fix-missing \ 
     && apt-get install -y \
         git \
-        python3.9 \
+        wget \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
@@ -31,3 +31,9 @@ ENV SHELL=/bin/bash
 RUN mkdir /home/repo
 VOLUME /home/repo
 WORKDIR /home/repo
+
+# install miniconda python distribution
+COPY ./miniconda-install /home/miniconda-install
+RUN chmod +x ~/miniconda-install \
+    && ~/miniconda-install \
+    && rm -rf ~/miniconda-install
