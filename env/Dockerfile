@@ -16,10 +16,14 @@ RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
 # install very minimal reqs
 RUN apt-get update --fix-missing \ 
     && apt-get install -y \
+        curl \
         git \
         wget \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
+
+# install docker using their handy script
+RUN curl -fsSL https://get.docker.com | sh
 
 #Setup File System
 ENV HOME=/home
