@@ -6,8 +6,6 @@ LABEL maintainer="jackhjfission <jackhjfission@gmail.com>"
 # set the environment variable and volume to share ssh keys
 # set the image SSH_AUTH_SOCK to a specific file
 ENV SSH_AUTH_SOCK=/ssh-agent/ssh
-# make the necessary volume within the agent
-VOLUME /ssh-agent
 
 # set the timezone, otherwise the installer goes into interactive mode
 ARG TZ=UTC
