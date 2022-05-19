@@ -8,4 +8,4 @@ sudo docker run -it --rm \
     --mount type=bind,source=/var/run/docker.sock,target=/var/run/docker.sock \
     -e CONTAINER_NAME=$(cut ./env/nametag -f1 -d:) \
     $(cat ./env/nametag) \
-    /bin/bash
+    -p 8888:8888
