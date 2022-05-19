@@ -1,6 +1,10 @@
 # reference: https://hub.docker.com/r/jupyter/minimal-notebook
 FROM jupyter/minimal-notebook:2022-05-13
 
+# need to specify root as in the minimal-notebook image the final
+# USER command is non-root
+USER root
+
 LABEL maintainer="jackhjfission <jackhjfission@gmail.com>"
 
 # set the environment variable and volume to share ssh keys
