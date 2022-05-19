@@ -35,3 +35,5 @@ WORKDIR /home/repo
 # COPY ./requirements.yml /home/requirements.yml
 # RUN mamba env update --file /home/requirements.yml --prune \
 #     && rm -rf /home/requirements.yml
+
+USER ${NB_UID}
