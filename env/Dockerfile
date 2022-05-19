@@ -1,5 +1,5 @@
-# reference: https://hub.docker.com/_/ubuntu/
-FROM ubuntu:20.04
+# reference: https://hub.docker.com/r/jupyter/minimal-notebook
+FROM jupyter/minimal-notebook:2022-05-13
 
 LABEL maintainer="jackhjfission <jackhjfission@gmail.com>"
 
