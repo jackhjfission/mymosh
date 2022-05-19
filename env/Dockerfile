@@ -3,7 +3,7 @@ FROM ubuntu:20.04
 
 LABEL maintainer="jackhjfission <jackhjfission@gmail.com>"
 
-# set the environment variable and volume to share ssh keys
+# set the environment variable
 # set the image SSH_AUTH_SOCK to a specific file
 ENV SSH_AUTH_SOCK=/ssh-agent/ssh
 
