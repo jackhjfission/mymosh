@@ -1,4 +1,5 @@
 # reference: https://hub.docker.com/r/jupyter/minimal-notebook
+# Dockerfile: https://github.com/jupyter/docker-stacks/blob/master/minimal-notebook/Dockerfile
 FROM jupyter/minimal-notebook:2022-05-13
 
 # need to specify root as in the minimal-notebook image the final
