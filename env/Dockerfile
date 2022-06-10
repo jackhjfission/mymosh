@@ -27,9 +27,6 @@ RUN curl -fsSL https://get.docker.com | sh
 #Setup File System
 ENV HOME=/home
 ENV SHELL=/bin/bash
-RUN mkdir /home/repo
-VOLUME /home/repo
-WORKDIR /home/repo
 
 # # install miniconda python distribution
 # COPY ./requirements.yml /home/requirements.yml
