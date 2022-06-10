@@ -1,5 +1,10 @@
-# reference: https://hub.docker.com/_/ubuntu/
-FROM ubuntu:20.04
+# reference: https://hub.docker.com/r/jupyter/minimal-notebook
+# Dockerfile: https://github.com/jupyter/docker-stacks/blob/master/minimal-notebook/Dockerfile
+FROM jupyter/minimal-notebook:2022-05-13
+
+# need to specify root as in the minimal-notebook image the final
+# USER command is non-root
+USER root
 
 LABEL maintainer="jackhjfission <jackhjfission@gmail.com>"
 
@@ -7,16 +12,11 @@ LABEL maintainer="jackhjfission <jackhjfission@gmail.com>"
 # set the image SSH_AUTH_SOCK to a specific file
 ENV SSH_AUTH_SOCK=/ssh-agent/ssh
 
-# set the timezone, otherwise the installer goes into interactive mode
-ARG TZ=UTC
-RUN ln -snf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
-
 # install very minimal reqs
 RUN apt-get update --fix-missing \ 
     && apt-get install -y \
         curl \
         git \
-        wget \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
@@ -26,15 +26,10 @@ RUN curl -fsSL https://get.docker.com | sh
 #Setup File System
 ENV HOME=/home
 ENV SHELL=/bin/bash
-RUN mkdir /home/repo
-VOLUME /home/repo
-WORKDIR /home/repo
 
-# install miniconda python distribution
-COPY ./miniconda-install /home/miniconda-install
-COPY ./requirements.yml /home/requirements.yml
-RUN chmod +x ~/miniconda-install \
-    && ~/miniconda-install \
-    && rm -rf ~/miniconda-install \
-    && /miniconda3/bin/conda env update --file /home/requirements.yml --prune \
-    && rm -rf /home/requirements.yml
+# # install requirements using mamba
+# COPY ./requirements.yml /home/requirements.yml
+# RUN mamba env update --file /home/requirements.yml --prune \
+#     && rm -rf /home/requirements.yml
+
+USER ${NB_UID}
