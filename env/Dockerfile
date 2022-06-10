@@ -29,7 +29,7 @@ RUN curl -fsSL https://get.docker.com | sh
 ENV HOME=/home
 ENV SHELL=/bin/bash
 
-# # install miniconda python distribution
+# # install requirements using mamba
 # COPY ./requirements.yml /home/requirements.yml
 # RUN mamba env update --file /home/requirements.yml --prune \
 #     && rm -rf /home/requirements.yml
