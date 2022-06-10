@@ -5,7 +5,7 @@ sudo docker run -it --rm \
     --name mymosh \
     -p 8888:8888 \
     --mount type=bind,source=$(dirname $SSH_AUTH_SOCK),target=/ssh-agent \
-    --mount type=bind,source=$(dirname $(readlink -f $0)),target=/home/repo \
+    --mount type=bind,source=$(dirname $(readlink -f $0)),target=/home/jovyan/work \
     --mount type=bind,source=/var/run/docker.sock,target=/var/run/docker.sock \
     -e CONTAINER_NAME=$(cut ./env/nametag -f1 -d:) \
     $(cat ./env/nametag) 
