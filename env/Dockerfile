@@ -16,7 +16,6 @@ ENV SSH_AUTH_SOCK=/ssh-agent/ssh
 RUN apt-get update --fix-missing \ 
     && apt-get install -y \
         curl \
-        git \
     && apt-get clean \
     && rm -rf /var/lib/apt/lists/*
 
